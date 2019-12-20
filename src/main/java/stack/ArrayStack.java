@@ -1,4 +1,4 @@
-package algorithmAndStructure.stack;
+package stack;
 
 import java.lang.reflect.Array;
 

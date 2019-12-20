@@ -1,4 +1,4 @@
-package algorithmAndStructure.stack;
+package stack;
 
 /**
  * @Auther: cyn

@@ -1,4 +1,4 @@
-package algorithmAndStructure.queueDemo;
+package queueDemo;
 
 import java.lang.reflect.Array;
 

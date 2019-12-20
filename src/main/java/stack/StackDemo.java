@@ -1,4 +1,4 @@
-package algorithmAndStructure.stack;
+package stack;
 
 import java.util.List;
 import java.util.Stack;
@@ -26,7 +26,7 @@ public class StackDemo {
         for (int i = 0; i < len; i++) {
             if (eles[i].isEmpty() || ".".equals(eles[i]))
                 continue;
-            if ("..".equals(eles[i])) {
+            if ("src/test".equals(eles[i])) {
                 if(stack.empty())
                     continue;
                 stack.pop();
