@@ -11,15 +11,17 @@ public class KindsOfSort {
     private int[] nums;
     private int len;
 
-    private KindsOfSort() {
-        nums = new int[]{2, 5, 9, 8, 4, 7, 3, 6};
+
+    public KindsOfSort() {
+        nums = new int[]{2, 1};
         len = nums.length;
     }
 
     public static void main(String[] args) {
         final KindsOfSort kindsOfSort = new KindsOfSort();
 //        kindsOfSort.insertSort();
-        kindsOfSort.quickSort();
+//        kindsOfSort.quickSort();
+        System.out.println(kindsOfSort.findTopNth(2));
         Arrays.stream(kindsOfSort.nums).forEach(e -> System.out.println(e));
     }
 
@@ -59,9 +61,44 @@ public class KindsOfSort {
                 swap(i, j);
             }
         }
-
         quickSort(begin, pivot - 1);
         quickSort(pivot + 1, end);
+    }
+
+    int n;
+    transient int topN;
+
+    private void quickSortForFindNthTop(int begin, int end) {
+        if (begin >= end) {
+            return;
+        }
+        int pivot = begin;
+        int i = begin;
+        int j = end;
+        while (i < j) {
+            while (nums[i] < nums[pivot]) {
+                i++;
+            }
+            while (nums[j] > nums[pivot]) {
+                j--;
+            }
+            if (i != j) {
+                swap(i, j);
+            }
+        }
+        if (i == n - 1)//find nth top element
+        {
+            this.topN = nums[n - 1];
+            return;
+        }
+        quickSortForFindNthTop(begin, pivot - 1);
+        quickSortForFindNthTop(pivot + 1, end);
+    }
+
+    private int findTopNth(int n) {
+        this.n = n;
+        quickSortForFindNthTop(0, len - 1);
+        return topN;
     }
 
     private void swap(int i, int j) {
